@@ -1,0 +1,39 @@
+/* XML E-Ticaret — özel stiller
+ * Tam yol: public/assets/css/app.css
+ */
+:root {
+  --eco-radius: 0.75rem;
+}
+
+.card {
+  border-radius: var(--eco-radius);
+}
+
+.navbar-brand {
+  letter-spacing: 0.02em;
+}
+
+/* Uzun tablolar için özelleştirilmiş scrollbar */
+.table-responsive::-webkit-scrollbar,
+body::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+.table-responsive::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.25);
+  border-radius: 8px;
+}
+body::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+}
+
+/* Dokunma hedefleri (mobil erişilebilirlik) */
+.btn-sm {
+  min-height: 36px;
+}
+.nav-link {
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+}

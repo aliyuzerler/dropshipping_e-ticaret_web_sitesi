@@ -1,0 +1,15 @@
+# Apache fallback (VPS'te birincil sunucu Nginx'tir).
+# Tam yol: public/.htaccess
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^ index.php [QSA,L]
+</IfModule>
+
+# Hassas dosyalara erişimi engelle
+<FilesMatch "^\.env|^composer\.">
+    Require all denied
+</FilesMatch>
+
+Options -Indexes

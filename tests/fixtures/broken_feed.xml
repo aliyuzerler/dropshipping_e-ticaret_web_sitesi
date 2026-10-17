@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  BOZUK (yarım kesilmiş) ÖRNEK feed — yalnızca test amaçlı, sentetik veri.
+  Dosya 3. ürünün ortasında kesilir; kapanış etiketleri yoktur.
+  Aktarım motorunun başarısızlığı yakalayıp katalogu koruması beklenir.
+-->
+<Urunler>
+  <Urun>
+    <URUN_KODU>BK-2001</URUN_KODU>
+    <BARKOD>8690000002001</BARKOD>
+    <URUN_ADI>Kesik Feed Test Ürünü 1</URUN_ADI>
+    <ACIKLAMA>Bu kayıt tamamlanmış ilk üründür (sentetik).</ACIKLAMA>
+    <KATEGORI>Ofis Gereçleri</KATEGORI>
+    <MARKA>TestMarka</MARKA>
+    <ALIS_FIYAT>10,00</ALIS_FIYAT>
+    <DOVIZ>TRY</DOVIZ>
+    <KDV>20</KDV>
+    <STOK>5</STOK>
+    <GORSEL>https://cdn.example-supplier.local/images/bk-2001-1.jpg</GORSEL>
+  </Urun>
+  <Urun>
+    <URUN_KODU>BK-2002</URUN_KODU>
+    <BARKOD>8690000002002</BARKOD>
+    <URUN_ADI>Kesik Feed Test Ürünü 2</URUN_ADI>
+    <ACIKLAMA>Bu kayıt tamamlanmış ikinci üründür (sentetik).</ACIKLAMA>
+    <KATEGORI>Ofis Gereçleri</KATEGORI>
+    <MARKA>TestMarka</MARKA>
+    <ALIS_FIYAT>20,00</ALIS_FIYAT>
+    <DOVIZ>TRY</DOVIZ>
+    <KDV>20</KDV>
+    <STOK>6</STOK>
+    <GORSEL>https://cdn.example-supplier.local/images/bk-2002-1.jpg</GORSEL>
+  </Urun>
+  <Urun>
+    <URUN_KODU>BK-2003</URUN_KODU>
+    <URUN_ADI>Yarım Kalmış Ürün Kaydı

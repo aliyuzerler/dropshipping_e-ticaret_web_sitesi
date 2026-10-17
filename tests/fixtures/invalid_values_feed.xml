@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  GEÇERSİZ DEĞER İÇEREN ÖRNEK feed — yalnızca test amaçlı, sentetik veri.
+  3 kayıt: (1) alış fiyatı "abc" geçersiz, (2) stok "-5" geçersiz, (3) geçerli kayıt.
+  Motorun yalnız geçerli satırı kabul edip hatalı satırları loglaması beklenir.
+-->
+<Urunler>
+  <Urun>
+    <URUN_KODU>IV-4001</URUN_KODU>
+    <BARKOD>8690000004001</BARKOD>
+    <URUN_ADI>Geçersiz Fiyatlı Test Ürünü</URUN_ADI>
+    <ACIKLAMA>Alış fiyatı alanı sayısal olmadığı için bu satır reddedilmelidir.</ACIKLAMA>
+    <KATEGORI>Ofis Gereçleri</KATEGORI>
+    <MARKA>TestMarka</MARKA>
+    <ALIS_FIYAT>abc</ALIS_FIYAT>
+    <DOVIZ>TRY</DOVIZ>
+    <KDV>20</KDV>
+    <STOK>10</STOK>
+    <GORSEL>https://cdn.example-supplier.local/images/iv-4001-1.jpg</GORSEL>
+  </Urun>
+  <Urun>
+    <URUN_KODU>IV-4002</URUN_KODU>
+    <BARKOD>8690000004002</BARKOD>
+    <URUN_ADI>Geçersiz Stoklu Test Ürünü</URUN_ADI>
+    <ACIKLAMA>Stok değeri negatif olduğu için bu satır reddedilmelidir.</ACIKLAMA>
+    <KATEGORI>Ofis Gereçleri</KATEGORI>
+    <MARKA>TestMarka</MARKA>
+    <ALIS_FIYAT>10,00</ALIS_FIYAT>
+    <DOVIZ>TRY</DOVIZ>
+    <KDV>20</KDV>
+    <STOK>-5</STOK>
+    <GORSEL>https://cdn.example-supplier.local/images/iv-4002-1.jpg</GORSEL>
+  </Urun>
+  <Urun>
+    <URUN_KODU>IV-4003</URUN_KODU>
+    <BARKOD>8690000004003</BARKOD>
+    <URUN_ADI>Geçerli Test Ürünü Metal Kalemlik</URUN_ADI>
+    <ACIKLAMA>Tüm alanları geçerli olan kayıt; aktarım bu ürünü oluşturmalıdır.</ACIKLAMA>
+    <KATEGORI>Ofis Gereçleri</KATEGORI>
+    <MARKA>TestMarka</MARKA>
+    <ALIS_FIYAT>19,90</ALIS_FIYAT>
+    <DOVIZ>TRY</DOVIZ>
+    <KDV>20</KDV>
+    <STOK>7</STOK>
+    <GORSEL>https://cdn.example-supplier.local/images/iv-4003-1.jpg</GORSEL>
+  </Urun>
+</Urunler>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  XXE SALDIRI DENEMESİ içeren ÖRNEK feed — yalnızca test amaçlı.
+  DOCTYPE + harici entity (file:///etc/passwd) tanımı içerir; aktarım motoru
+  bu dosyayı güvenlik nedeniyle REDDETMEZ durumda olmalıdır (XXE savunması).
+-->
+<!DOCTYPE Urunler [
+  <!ENTITY xxe SYSTEM "file:///etc/passwd">
+]>
+<Urunler>
+  <Urun>
+    <URUN_KODU>XX-3001</URUN_KODU>
+    <URUN_ADI>&xxe;</URUN_ADI>
+    <ACIKLAMA>Entity ikamesi denenmiş sahte kayıt.</ACIKLAMA>
+    <KATEGORI>Ofis Gereçleri</KATEGORI>
+    <MARKA>TestMarka</MARKA>
+    <ALIS_FIYAT>10,00</ALIS_FIYAT>
+    <DOVIZ>TRY</DOVIZ>
+    <KDV>20</KDV>
+    <STOK>5</STOK>
+  </Urun>
+</Urunler>

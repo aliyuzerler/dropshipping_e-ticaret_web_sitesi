@@ -1,0 +1,35 @@
+{
+    "name": "zai/xml-ecommerce",
+    "description": "XML tedarikçi feed'leriyle çalışan bağımsız (dropshipping) e-ticaret altyapısı — PHP 8.2+, MySQL 8+, PDO, XMLReader",
+    "type": "project",
+    "license": "proprietary",
+    "require": {
+        "php": ">=8.2",
+        "ext-pdo": "*",
+        "ext-pdo_mysql": "*",
+        "ext-xmlreader": "*",
+        "ext-curl": "*",
+        "ext-fileinfo": "*",
+        "ext-mbstring": "*",
+        "ext-openssl": "*",
+        "ext-json": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\": "app/"
+        },
+        "files": [
+            "app/Core/helpers.php"
+        ]
+    },
+    "scripts": {
+        "migrate": "php database/migrate.php",
+        "seed": "php database/seed.php",
+        "test": "php tests/run.php",
+        "lint": "php tests/lint.php"
+    },
+    "config": {
+        "sort-packages": true,
+        "platform-check": true
+    }
+}

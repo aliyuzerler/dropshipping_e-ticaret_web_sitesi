@@ -1,0 +1,37 @@
+#!/usr/bin/env php
+<?php
+
+declare(strict_types=1);
+
+/**
+ * Uygulama konsolu (CLI).
+ *
+ * Kullanım:
+ *   php bin/console list
+ *   php bin/console xml:sync --feed=1
+ *   php bin/console xml:sync --all
+ *   php bin/console feed:list
+ *   php bin/console xml:preview --feed=1 [--file=/path/sample.xml] [--limit=5]
+ *
+ * Tam yol: bin/console
+ */
+
+if (PHP_SAPI !== 'cli') {
+    fwrite(STDERR, "Bu betik yalnız CLI'da çalıştırılabilir.\n");
+    exit(1);
+}
+
+define('BASE_PATH', dirname(__DIR__));
+
+require BASE_PATH . '/app/Core/Autoloader.php';
+\Autoloader::register();
+require BASE_PATH . '/app/Core/helpers.php';
+
+App\Core\Env::load(BASE_PATH . '/.env');
+App\Core\Config::load(BASE_PATH . '/config');
+date_default_timezone_set((string) App\Core\Config::get('app.timezone', 'UTC'));
+App\Core\App::boot(BASE_PATH);
+
+use App\Console\ConsoleKernel;
+
+exit(ConsoleKernel::main($argv));

@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ÖRNEK / SENTETİK tedarikçi XML feed'i — v2 (güncelleme senaryosu, yalnızca test amaçlı).
+  sample_feed.xml'e göre farklar:
+   - TK-1001: fiyat 42,50 -> 49,90 ve stok 15 -> 3
+   - TK-1002: yalnızca stok 40 -> 12
+   - TK-1003: feed'den tamamen ÇIKARILDI (pasife alma testi için)
+   - TK-1004: değişiklik yok
+   - TK-1010: YENİ ürün eklendi
+  Gerçek bir tedarikçi verisi DEĞİLDİR (örnek alan adı: example-supplier.local).
+-->
+<Urunler>
+  <Urun>
+    <URUN_KODU>TK-1001</URUN_KODU>
+    <BARKOD>8690000000018</BARKOD>
+    <URUN_ADI>Mavi Tükenmez Kalem İğne Uç 0.5 mm (50 Adet)</URUN_ADI>
+    <ACIKLAMA>İğne uçlu, 0.5 mm mavi mürekkepli tükenmez kalem. Ofis ve okul kullanımı için ekonomik 50 adetlik kutu.</ACIKLAMA>
+    <KATEGORI>Kalemler</KATEGORI>
+    <MARKA>OfisPro</MARKA>
+    <ALIS_FIYAT>49,90</ALIS_FIYAT>
+    <DOVIZ>TRY</DOVIZ>
+    <KDV>20</KDV>
+    <STOK>3</STOK>
+    <GORSEL>https://cdn.example-supplier.local/images/tk-1001-1.jpg</GORSEL>
+  </Urun>
+  <Urun>
+    <URUN_KODU>TK-1002</URUN_KODU>
+    <BARKOD>8690000000025</BARKOD>
+    <URUN_ADI>Çiçek Desenli Kareli Defter A5 80 Yaprak</URUN_ADI>
+    <ACIKLAMA>A5 boyutunda 80 yaprak kareli defter, çiçek desenli kapak. Dikişli sırt, plastik kapak.</ACIKLAMA>
+    <KATEGORI>Defterler</KATEGORI>
+    <MARKA>NotaMat</MARKA>
+    <ALIS_FIYAT>28,75</ALIS_FIYAT>
+    <DOVIZ>TRY</DOVIZ>
+    <KDV>10</KDV>
+    <STOK>12</STOK>
+    <GORSEL>https://cdn.example-supplier.local/images/tk-1002-1.jpg</GORSEL>
+    <GORSEL2>https://cdn.example-supplier.local/images/tk-1002-2.jpg</GORSEL2>
+    <VARYANT>desen:Çiçek</VARYANT>
+  </Urun>
+  <Urun>
+    <URUN_KODU>TK-1004</URUN_KODU>
+    <BARKOD>8690000000049</BARKOD>
+    <URUN_ADI>Fotokopi Kağıdı A4 80 gr 500 Yaprak</URUN_ADI>
+    <ACIKLAMA>Beyaz fotokopi kağıdı, A4, 80 gr/m2, 500 yaprak. Lazer ve mürekkep püskürtmeli yazıcılarla uyumlu.</ACIKLAMA>
+    <KATEGORI>Kağıt Ürünleri</KATEGORI>
+    <MARKA>KagitCo</MARKA>
+    <ALIS_FIYAT>1234.90</ALIS_FIYAT>
+    <DOVIZ>TRY</DOVIZ>
+    <KDV>20</KDV>
+    <STOK>8</STOK>
+    <GORSEL>https://cdn.example-supplier.local/images/tk-1004-1.jpg</GORSEL>
+  </Urun>
+  <Urun>
+    <URUN_KODU>TK-1005</URUN_KODU>
+    <BARKOD>8690000000056</BARKOD>
+    <URUN_ADI>Masaüstü Dosyalama Kabı Letra A4</URUN_ADI>
+    <ACIKLAMA>Masaüstü telli dosyalama kabı, A4 boyut. Ofis masasında belge düzenlemek için idealdir.</ACIKLAMA>
+    <KATEGORI>Ofis Gereçleri</KATEGORI>
+    <MARKA>OfisDepo</MARKA>
+    <ALIS_FIYAT>12.40</ALIS_FIYAT>
+    <DOVIZ>USD</DOVIZ>
+    <KDV>20</KDV>
+    <STOK>30</STOK>
+    <GORSEL>https://cdn.example-supplier.local/images/tk-1005-1.jpg</GORSEL>
+  </Urun>
+  <Urun>
+    <URUN_KODU>TK-1006</URUN_KODU>
+    <BARKOD>8690000000063</BARKOD>
+    <URUN_ADI>Şeffaf Kaydırmalı Kitap Kapağı</URUN_ADI>
+    <ACIKLAMA>Şeffaf, kaydırmalı kitap kapağı. Okul kitaplarını toz ve sıvıdan korur.</ACIKLAMA>
+    <KATEGORI>Okul Ürünleri</KATEGORI>
+    <MARKA>OkulMax</MARKA>
+    <ALIS_FIYAT>18,25</ALIS_FIYAT>
+    <DOVIZ>TRY</DOVIZ>
+    <KDV>20</KDV>
+    <STOK>60</STOK>
+    <GORSEL>https://cdn.example-supplier.local/images/tk-1006-1.jpg</GORSEL>
+    <VARYANT>beden:S|M|L</VARYANT>
+  </Urun>
+  <Urun>
+    <URUN_KODU>TK-1007</URUN_KODU>
+    <BARKOD>8690000000070</BARKOD>
+    <URUN_ADI>Paslanmaz Ofis Makası 21 cm</URUN_ADI>
+    <ACIKLAMA>Paslanmaz çelik ofis makası, 21 cm. Ergonomik sap, hassas kesim.</ACIKLAMA>
+    <KATEGORI>Makaslar</KATEGORI>
+    <MARKA>KeskinOfis</MARKA>
+    <ALIS_FIYAT>54,90</ALIS_FIYAT>
+    <DOVIZ>TRY</DOVIZ>
+    <KDV>20</KDV>
+    <STOK>12</STOK>
+    <GORSEL>https://cdn.example-supplier.local/images/tk-1007-1.jpg</GORSEL>
+    <GORSEL2>https://cdn.example-supplier.local/images/tk-1007-2.jpg</GORSEL2>
+  </Urun>
+  <Urun URUN_KODU="TK-1008">
+    <BARKOD>8690000000087</BARKOD>
+    <URUN_ADI>Yapışkanlı Not Kağıdı 76x76 100 Yaprak</URUN_ADI>
+    <ACIKLAMA>76x76 mm yapışkanlı not kağıdı, 100 yaprak. Fosforlu renk karışımı.</ACIKLAMA>
+    <KATEGORI>Ofis Gereçleri</KATEGORI>
+    <MARKA>PostFix</MARKA>
+    <ALIS_FIYAT>15,40</ALIS_FIYAT>
+    <DOVIZ>TRY</DOVIZ>
+    <KDV>20</KDV>
+    <STOK>90</STOK>
+    <GORSEL>https://cdn.example-supplier.local/images/tk-1008-1.jpg</GORSEL>
+  </Urun>
+  <Urun>
+    <URUN_KODU>TK-1010</URUN_KODU>
+    <BARKOD>8690000010016</BARKOD>
+    <URUN_ADI>Zımba Teli No 10 (1000 Adet)</URUN_ADI>
+    <ACIKLAMA>No 10 zımba teli, 1000 adet ambalaj. Tüm standart No 10 zımbalarla uyumlu.</ACIKLAMA>
+    <KATEGORI>Ofis Gereçleri</KATEGORI>
+    <MARKA>KeskinOfis</MARKA>
+    <ALIS_FIYAT>22,10</ALIS_FIYAT>
+    <DOVIZ>TRY</DOVIZ>
+    <KDV>20</KDV>
+    <STOK>45</STOK>
+    <GORSEL>https://cdn.example-supplier.local/images/tk-1010-1.jpg</GORSEL>
+  </Urun>
+</Urunler>

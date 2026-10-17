@@ -1,0 +1,25 @@
+# Ortam & gizliler
+.env
+.env.*
+!.env.example
+!.env.production.example
+
+# Composer
+/vendor/
+composer.lock
+
+# Storage (çalışma zamanı artefaktları)
+/storage/logs/*.log
+/storage/logs/*.log.*
+/storage/imports/*
+/storage/locks/*
+/storage/cache/*
+# DB dump'ları (müşteri verisi içerir — ASLA commit edilmez)
+/storage/backups/
+!/storage/*/.gitkeep
+
+# IDE / OS
+.idea/
+.vscode/
+*.swp
+.DS_Store

@@ -1,0 +1,46 @@
+# Crontab örneği — XML E-Ticaret (Aşama 6)
+# Kurulum: sudo crontab -u www-data -e  → satırları yapıştırın
+# (/var/www/xml-ecommerce yolunu kendi VPS yolunuzla değiştirin.)
+# Tam yol: cron/crontab.example
+#
+# ÇAKIŞMA KORUMASI (iki katman):
+#   1) Kabuk katmanı: her satır flock -n ile sarılır — aynı cron işinin ikinci
+#      örneği önceki bitmeden başlamaz (geciken çalışma üst üste binmez).
+#   2) Uygulama katmanı: XML aktarımı FeedLock (flock) ile kaynak başına kilitlidir
+#      (app/Services/Import/FeedLock.php) — iki farklı giriş noktası bile aynı
+#      feed'i eşzamanlı işleyemez; kilit alınamazsa güvenli şekilde atlanır.
+# Kilit dosyaları /tmp altındadır (yeniden başlatmada kendiliğinden temizlenir).
+
+# --- XML feed senkronizasyonu — her 10 dakikada bir ---------------------------
+# Zamanı gelen (interval_minutes dolmuş) AKTİF url kaynakları işlenir.
+*/10 * * * * flock -n /tmp/xmlsync.lock -c 'cd /var/www/xml-ecommerce && /usr/bin/php bin/console xml:sync --all >> storage/logs/cron.log 2>&1'
+
+# Belirli bir kaynağı sık sık senkronize et (örn. hızlı değişen stok) — opsiyonel:
+# */5 * * * * flock -n /tmp/xmlsync.lock -c 'cd /var/www/xml-ecommerce && /usr/bin/php bin/console xml:sync --feed=1 >> storage/logs/cron.log 2>&1'
+
+# Gece tam senkron (zamanlamayı yok sayar, upload kaynaklarının dosyası da dahil) — opsiyonel:
+# 0 3 * * * flock -n /tmp/xmlsync-force.lock -c 'cd /var/www/xml-ecommerce && /usr/bin/php bin/console xml:sync --force >> storage/logs/cron.log 2>&1'
+
+# Alternatif: Aşama 1 cron girişi de aynı motoru çalıştırır (ikisinden BİRİNİ kullanın):
+# */10 * * * * flock -n /tmp/import-feeds.lock -c 'cd /var/www/xml-ecommerce && /usr/bin/php cron/import_feeds.php >> storage/logs/cron.log 2>&1'
+
+# --- Sipariş yaşam döngüsü -----------------------------------------------------
+# Süresi geçen ödeme bekleyen siparişleri iptal et (pending_payment → cancelled)
+*/10 * * * * flock -n /tmp/order-expire.lock -c 'cd /var/www/xml-ecommerce && /usr/bin/php bin/console order:expire >> storage/logs/cron.log 2>&1'
+
+# --- AŞAMA 5: tedarikçi siparişleri, kargo ve bildirimler ----------------------
+*/5  * * * * flock -n /tmp/supplier-process.lock -c 'cd /var/www/xml-ecommerce && /usr/bin/php bin/console supplier:process   >> storage/logs/cron.log 2>&1'
+*/15 * * * * flock -n /tmp/supplier-query.lock   -c 'cd /var/www/xml-ecommerce && /usr/bin/php bin/console supplier:query    >> storage/logs/cron.log 2>&1'
+*/30 * * * * flock -n /tmp/shipments-sync.lock   -c 'cd /var/www/xml-ecommerce && /usr/bin/php bin/console shipments:sync    >> storage/logs/cron.log 2>&1'
+*/5  * * * * flock -n /tmp/notifications.lock    -c 'cd /var/www/xml-ecommerce && /usr/bin/php bin/console notifications:send >> storage/logs/cron.log 2>&1'
+
+# --- AŞAMA 6: yedekleme (her gece 03:30) ---------------------------------------
+# cron/backup-daily.sh → flock (tek örnek) → scripts/backup-database.sh
+# Yapılandırma (opsiyonel): RETENTION_DAYS, OFFSITE_CMD, BACKUP_GPG_RECIPIENT, DB_*
+30 3 * * * flock -n /tmp/xml-backup.lock -c 'APP_DIR=/var/www/xml-ecommerce /var/www/xml-ecommerce/cron/backup-daily.sh >> /var/www/xml-ecommerce/storage/logs/cron.log 2>&1'
+
+# Yedek GERİ DÖNÜŞ testi (ayda bir, 1. pazar 04:30) — scripts/verify-backup.sh
+# 30 4 1-7 * 0 flock -n /tmp/xml-verify.lock -c 'APP_DIR=/var/www/xml-ecommerce /var/www/xml-ecommerce/scripts/verify-backup.sh >> /var/www/xml-ecommerce/storage/logs/cron.log 2>&1'
+
+# --- Bakım: 30 günden eski döndürülmüş uygulama loglarını temizle --------------
+# 0 4 * * 0 find /var/www/xml-ecommerce/storage/logs -name "*.log.*" -mtime +30 -delete
